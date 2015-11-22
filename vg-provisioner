@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+
+export DEBIAN_FRONTEND=noninteractive
+
+#installpkg(){
+#    dpkg-query --status $1 >/dev/null || apt-get install -y $1
+#}
+
+setupMySQL(){
+	echo "Setting up MySQL..."
+	apt-get update
+	debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'
+	debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
+	apt-get install -y mysql-server 
+	service mysql restart
+	mysql --user=root --password=root --host=127.0.0.1 --port=3306 --execute="create database hello_django;"
+	echo -e "\tDONE::: Setting up MySQL."
+}
+
+setupPythonVirtualEnv(){
+	echo "Setting up VirtualEnv..."
+	cd /home/vagrant
+	wget https://pypi.python.org/packages/source/v/virtualenv/virtualenv-13.1.2.tar.gz
+	tar zxvf ./virtualenv-13.1.2.tar.gz
+	python ./virtualenv-13.1.2/virtualenv.py ./myDjangoVirtualEnv
+	rm -r ./virtualenv-13.1.2/
+	rm ./virtualenv-13.1.2.tar.gz
+	source ./myDjangoVirtualEnv/bin/activate
+	pip install ipython
+	deactivate
+	echo -e "\tDONE::: Setting up VirtualEnv."
+}
+
+installDjangoViaPip(){
+	echo "Installing django via pip..."
+	cd /home/vagrant
+	source ./myDjangoVirtualEnv/bin/activate
+	pip install django
+	deactivate
+	echo -e "\tDONE::: Installing django via pip."
+}
+
+setupMySQL
+setupPythonVirtualEnv
+installDjangoViaPip
