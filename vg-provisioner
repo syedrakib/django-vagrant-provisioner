@@ -11,7 +11,7 @@ setupMySQL(){
 	apt-get update
 	debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'
 	debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
-	apt-get install -y mysql-server 
+	apt-get install -y mysql-server
 	service mysql restart
 	mysql --user=root --password=root --host=127.0.0.1 --port=3306 --execute="create database hello_django;"
 	echo -e "\tDONE::: Setting up MySQL."
@@ -45,13 +45,15 @@ startDjangoProject(){
 	# This scope only illustrates what shell commands you should run
 	# to get a new django project started in this vagrant box. 
 	return
-	cd /home/vagrant
 	echo "Starting new django project 'mysite'..."
+	cd /home/vagrant
 	source ./myDjangoVirtualEnv/bin/activate
 	cd ./sourcecodes
 	django-admin startproject mysite # creates a bunch of files for the project
 	mv mysite myproject
 	deactivate
+	cd ../
+	echo -e "\tDONE::: Starting new project 'mysite' - relocated to 'myproject'"
 }
 
 setupMySQL
