@@ -13,7 +13,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # config.vm.network "private_network", ip: "192.168.33.10"
   # config.vm.network "public_network"
   config.ssh.forward_agent = true
-  # config.vm.synced_folder "./projectsrc", "/home/vagrant/projectsrc"
+  config.vm.synced_folder "./sourcecodes", "/home/vagrant/sourcecodes"
   config.vm.provider "virtualbox" do |vb|
     # # Don't boot with headless mode
     # vb.gui = true
