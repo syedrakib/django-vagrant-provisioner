@@ -40,6 +40,21 @@ installDjangoViaPip(){
 	echo -e "\tDONE::: Installing django via pip."
 }
 
+startDjangoProject(){
+	# This scope does not actually execute.
+	# This scope only illustrates what shell commands you should run
+	# to get a new django project started in this vagrant box. 
+	return
+	cd /home/vagrant
+	echo "Starting new django project 'mysite'..."
+	source ./myDjangoVirtualEnv/bin/activate
+	cd ./sourcecodes
+	django-admin startproject mysite # creates a bunch of files for the project
+	mv mysite myproject
+	deactivate
+}
+
 setupMySQL
 setupPythonVirtualEnv
 installDjangoViaPip
+startDjangoProject
