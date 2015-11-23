@@ -100,4 +100,9 @@ setupMySQL
 setupPythonVirtualEnv
 installDjangoViaPip
 startDjangoProject
+configureDjangoSettingsDotPy
 installMySQLdbDriversForDjango
+populateDBwithInitialDjangoSchema
+
+
+
