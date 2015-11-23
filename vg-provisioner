@@ -100,7 +100,7 @@ runDjangoServer(){
 	cd /home/vagrant
 	source ./myDjangoVirtualEnv/bin/activate
 	cd ./sourcecodes/myproject
-	python ./manage.py runserver
+	python ./manage.py runserver 0.0.0.0:8000
 }
 
 updateAptGetPackages
