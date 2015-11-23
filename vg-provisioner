@@ -56,6 +56,24 @@ startDjangoProject(){
 	echo -e "\tDIM::: Start new project 'mysite' - relocated to 'myproject'"
 }
 
+configureDjangoSettingsDotPy(){
+	return
+	echo "DIY::: Configure mysite/settings.py to use MySQL"
+	# Use this JSON object as the value for DATABASES['default']:
+	# {
+ 	#        'ENGINE':	'django.db.backends.mysql',
+ 	#        'NAME': 	'hello_django',
+ 	#        'USER': 	'root',
+ 	#        'PASSWORD':'root',
+ 	#        'HOST': 	'127.0.0.1',
+ 	#        'PORT': 	'3306'
+ 	# }
+	# follow https://docs.djangoproject.com/en/1.8/intro/tutorial01/#database-setup
+	echo "DIY::: Configure mysite/settings.py to set local timezone to 'Asia/Dhaka'"
+	# set TIME_ZONE = 'Asia/Dhaka'
+	echo "DIM::: Configure mysite/settings.py"
+}
+
 installMySQLdbDriversForDjango(){
 	echo "Installing MySQL DB Drivers for Django..."
 	apt-get install -y libmysqlclient-dev 
