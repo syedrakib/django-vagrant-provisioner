@@ -87,7 +87,7 @@ populateDatabaseWithInitialDjangoSchema(){
 	return
 	cd /home/vagrant
 	source ./myDjangoVirtualEnv/bin/activate
-	cd ./sourcecodes/myproject/
+	cd ./sourcecodes/mysite/
 	python ./manage.py migrate # the actual command that sets up the initial DB state
 	deactivate
 	cd ../../
@@ -98,7 +98,7 @@ runDjangoServer(){
 	return
 	cd /home/vagrant
 	source ./myDjangoVirtualEnv/bin/activate
-	cd ./sourcecodes/myproject
+	cd ./sourcecodes/mysite
 	python ./manage.py runserver 0.0.0.0:8000
 }
 
