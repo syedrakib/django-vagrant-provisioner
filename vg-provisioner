@@ -40,40 +40,6 @@ installDjangoViaPip(){
 	echo -e "\tDONE::: Installing django via pip."
 }
 
-startDjangoProject(){
-	# This scope does not actually execute.
-	# This scope only illustrates what shell commands you should run
-	# to get a new django project started in this vagrant box. 
-	return
-	echo "DIY::: Start new django project 'mysite'..."
-	cd /home/vagrant
-	source ./myDjangoVirtualEnv/bin/activate
-	cd ./sourcecodes
-	django-admin startproject mysite # creates a bunch of files for the project
-	mv mysite myproject
-	deactivate
-	cd ../
-	echo -e "\tDIM::: Start new project 'mysite' - relocated to 'myproject'"
-}
-
-configureDjangoSettingsDotPy(){
-	return
-	echo "DIY::: Configure mysite/settings.py to use MySQL"
-	# Use this JSON object as the value for DATABASES['default']:
-	# {
- 	#        'ENGINE':	'django.db.backends.mysql',
- 	#        'NAME': 	'hello_django',
- 	#        'USER': 	'root',
- 	#        'PASSWORD':'root',
- 	#        'HOST': 	'127.0.0.1',
- 	#        'PORT': 	'3306'
- 	# }
-	# follow https://docs.djangoproject.com/en/1.8/intro/tutorial01/#database-setup
-	echo "DIY::: Configure mysite/settings.py to set local timezone to 'Asia/Dhaka'"
-	# set TIME_ZONE = 'Asia/Dhaka'
-	echo "DIM::: Configure mysite/settings.py"
-}
-
 installMySQLdbDriversForDjango(){
 	echo "Installing MySQL DB Drivers for Django..."
 	apt-get install -y libmysqlclient-dev 
@@ -85,23 +51,50 @@ installMySQLdbDriversForDjango(){
 	echo -e "\tDONE::: Installing MySQL DB Drivers for Django."
 }
 
+startDjangoProject(){
+	echo "DIY::: Start new django project 'mysite'..."
+	return
+	cd /home/vagrant
+	source ./myDjangoVirtualEnv/bin/activate
+	cd ./sourcecodes
+	django-admin startproject mysite # creates a bunch of files for the project
+	mv mysite myproject
+	deactivate
+	cd ../
+}
+
+configureDjangoSettingsDotPy(){
+	echo "DIY::: Configure mysite/settings.py"
+	return
+	# Use this JSON object as the value for DATABASES['default']:
+	# {
+ 	#        'ENGINE':	'django.db.backends.mysql',
+ 	#        'NAME': 	'hello_django',
+ 	#        'USER': 	'root',
+ 	#        'PASSWORD':'root',
+ 	#        'HOST': 	'127.0.0.1',
+ 	#        'PORT': 	'3306'
+ 	# }
+	# set TIME_ZONE = 'Asia/Dhaka'
+}
+
 populateDatabaseWithInitialDjangoSchema(){
-	echo "Populate Database with initial django schema..."
+	echo "DIY::: Populate database with initial django schema..."
+	return
 	cd /home/vagrant
 	source ./myDjangoVirtualEnv/bin/activate
 	cd ./sourcecodes/myproject/
 	python ./manage.py migrate
 	deactivate
 	cd ../../
-	echo -e "\tDONE::: Populate Database with initial django schema."
 }
 
 setupMySQL
 setupPythonVirtualEnv
 installDjangoViaPip
+installMySQLdbDriversForDjango
 startDjangoProject
 configureDjangoSettingsDotPy
-installMySQLdbDriversForDjango
 populateDBwithInitialDjangoSchema
 
 
