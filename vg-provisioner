@@ -89,9 +89,18 @@ populateDatabaseWithInitialDjangoSchema(){
 	cd /home/vagrant
 	source ./myDjangoVirtualEnv/bin/activate
 	cd ./sourcecodes/myproject/
-	python ./manage.py migrate
+	python ./manage.py migrate # the actual command that sets up the initial DB state
 	deactivate
 	cd ../../
+}
+
+runDjangoServer(){
+	echo "DIY::: Run django server..."	
+	return
+	cd /home/vagrant
+	source ./myDjangoVirtualEnv/bin/activate
+	cd ./sourcecodes/myproject
+	python ./manage.py runserver
 }
 
 updateAptGetPackages
@@ -102,6 +111,6 @@ installMySQLdbDriversForDjango
 startDjangoProject
 configureDjangoSettingsDotPy
 populateDatabaseWithInitialDjangoSchema
-
+runDjangoServer
 
 
