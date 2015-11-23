@@ -101,7 +101,7 @@ installDjangoViaPip
 installMySQLdbDriversForDjango
 startDjangoProject
 configureDjangoSettingsDotPy
-populateDBwithInitialDjangoSchema
+populateDatabaseWithInitialDjangoSchema
 
 
 
