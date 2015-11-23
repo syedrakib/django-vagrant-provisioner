@@ -63,13 +63,12 @@ startDjangoProject(){
 	source ./myDjangoVirtualEnv/bin/activate
 	cd ./sourcecodes
 	django-admin startproject mysite # creates a bunch of files for the project
-	mv mysite myproject
 	deactivate
 	cd ../
 }
 
 configureDjangoSettingsDotPy(){
-	echo "DIY::: Configure mysite/settings.py"
+	echo "DIY::: Configure mysite/mysite/settings.py"
 	return
 	# Use this JSON object as the value for DATABASES['default']:
 	{
