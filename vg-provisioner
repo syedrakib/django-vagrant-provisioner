@@ -72,14 +72,14 @@ configureDjangoSettingsDotPy(){
 	echo "DIY::: Configure mysite/settings.py"
 	return
 	# Use this JSON object as the value for DATABASES['default']:
-	# {
- 	#        'ENGINE':	'django.db.backends.mysql',
- 	#        'NAME': 	'hello_django',
- 	#        'USER': 	'root',
- 	#        'PASSWORD':'root',
- 	#        'HOST': 	'127.0.0.1',
- 	#        'PORT': 	'3306'
- 	# }
+	{
+       'ENGINE':	'django.db.backends.mysql',
+       'NAME':		'hello_django',
+       'USER': 		'root',
+       'PASSWORD':	'root',
+       'HOST':		'127.0.0.1',
+       'PORT':		'3306'
+ 	}
 	# set TIME_ZONE = 'Asia/Dhaka'
 }
 
