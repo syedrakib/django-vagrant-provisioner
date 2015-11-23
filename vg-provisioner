@@ -56,7 +56,7 @@ startDjangoProject(){
 	# This scope only illustrates what shell commands you should run
 	# to get a new django project started in this vagrant box. 
 	return
-	echo "Starting new django project 'mysite'..."
+	echo "DIY::: Start new django project 'mysite'..."
 	cd /home/vagrant
 	source ./myDjangoVirtualEnv/bin/activate
 	cd ./sourcecodes
@@ -64,7 +64,7 @@ startDjangoProject(){
 	mv mysite myproject
 	deactivate
 	cd ../
-	echo -e "\tDONE::: Starting new project 'mysite' - relocated to 'myproject'"
+	echo -e "\tDIM::: Start new project 'mysite' - relocated to 'myproject'"
 }
 
 setupMySQL
