@@ -85,6 +85,17 @@ installMySQLdbDriversForDjango(){
 	echo -e "\tDONE::: Installing MySQL DB Drivers for Django."
 }
 
+populateDatabaseWithInitialDjangoSchema(){
+	echo "Populate Database with initial django schema..."
+	cd /home/vagrant
+	source ./myDjangoVirtualEnv/bin/activate
+	cd ./sourcecodes/myproject/
+	python ./manage.py migrate
+	deactivate
+	cd ../../
+	echo -e "\tDONE::: Populate Database with initial django schema."
+}
+
 setupMySQL
 setupPythonVirtualEnv
 installDjangoViaPip
