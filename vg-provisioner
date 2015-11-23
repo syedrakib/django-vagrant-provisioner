@@ -100,6 +100,16 @@ DIYrunDjangoServer(){
 	python ./manage.py runserver 0.0.0.0:8000 # visit localhost:8001 based on the <config.vm.network "forwarded_port"> settings in Vagrantfile
 }
 
+DIYstartNewDjangoApp(){
+	echo "DIY::: Start new django app 'polls'..."	
+	return
+	cd /home/vagrant
+	source ./myDjangoVirtualEnv/bin/activate
+	cd ./sourcecodes/mysite
+	python manage.py startapp polls
+	deactivate
+}
+
 DoItYourselfBlock(){
 	echo "##################################################################"
 	echo "############### YOU HAVE ENTERED DoItYourselfBlock ###############"
@@ -108,6 +118,7 @@ DoItYourselfBlock(){
 	DIYconfigureSettingsDotPy
 	DIYpopulateDatabaseWithInitialDjangoSchema
 	DIYrunDjangoServer
+	DIYstartNewDjangoApp
 }
 
 updateAptGetPackages
