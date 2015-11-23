@@ -56,7 +56,7 @@ installMySQLdbDriversForDjango(){
 	echo -e "\tDONE::: Installing MySQL DB Drivers for Django."
 }
 
-startNewDjangoProject(){
+DIYstartNewDjangoProject(){
 	echo "DIY::: Start new django project 'mysite'..."
 	return
 	cd /home/vagrant
@@ -66,8 +66,8 @@ startNewDjangoProject(){
 	deactivate
 }
 
-configureDjangoSettingsDotPy(){
-	echo "DIY::: Configure mysite/mysite/settings.py"
+DIYconfigureSettingsDotPy(){
+	echo "DIY::: Configure mysite/mysite/settings.py to declare DB/timezone settings..."
 	return
 	# Use this JSON object as the value for DATABASES['default']:
 	{
@@ -81,7 +81,7 @@ configureDjangoSettingsDotPy(){
 	# set TIME_ZONE = 'Asia/Dhaka'
 }
 
-populateDatabaseWithInitialDjangoSchema(){
+DIYpopulateDatabaseWithInitialDjangoSchema(){
 	echo "DIY::: Populate database with initial django schema..."
 	return
 	cd /home/vagrant
@@ -91,7 +91,7 @@ populateDatabaseWithInitialDjangoSchema(){
 	deactivate
 }
 
-runDjangoServer(){
+DIYrunDjangoServer(){
 	echo "DIY::: Run django server..."	
 	return
 	cd /home/vagrant
@@ -100,14 +100,21 @@ runDjangoServer(){
 	python ./manage.py runserver 0.0.0.0:8000
 }
 
+DoItYourselfBlock(){
+	echo "##################################################################"
+	echo "############### YOU HAVE ENTERED DoItYourselfBlock ###############"
+	echo "##################################################################"
+	DIYstartNewDjangoProject
+	DIYconfigureSettingsDotPy
+	DIYpopulateDatabaseWithInitialDjangoSchema
+	DIYrunDjangoServer
+}
+
 updateAptGetPackages
 setupMySQL
 setupPythonVirtualEnv
 installDjangoViaPip
 installMySQLdbDriversForDjango
-startNewDjangoProject
-configureDjangoSettingsDotPy
-populateDatabaseWithInitialDjangoSchema
-runDjangoServer
+DoItYourselfBlock
 
 
