@@ -40,17 +40,6 @@ installDjangoViaPip(){
 	echo -e "\tDONE::: Installing django via pip."
 }
 
-installMySQLdbDriversForDjango(){
-	echo "Installing MySQL DB Drivers for Django..."
-	apt-get install -y libmysqlclient-dev 
-	apt-get install -y python-dev
-	cd /home/vagrant
-	source ./myDjangoVirtualEnv/bin/activate
-	pip install mysqlclient
-	deactivate
-	echo -e "\tDONE::: Installing MySQL DB Drivers for Django."
-}
-
 startDjangoProject(){
 	# This scope does not actually execute.
 	# This scope only illustrates what shell commands you should run
@@ -67,8 +56,19 @@ startDjangoProject(){
 	echo -e "\tDIM::: Start new project 'mysite' - relocated to 'myproject'"
 }
 
+installMySQLdbDriversForDjango(){
+	echo "Installing MySQL DB Drivers for Django..."
+	apt-get install -y libmysqlclient-dev 
+	apt-get install -y python-dev
+	cd /home/vagrant
+	source ./myDjangoVirtualEnv/bin/activate
+	pip install mysqlclient
+	deactivate
+	echo -e "\tDONE::: Installing MySQL DB Drivers for Django."
+}
+
 setupMySQL
 setupPythonVirtualEnv
 installDjangoViaPip
-installMySQLdbDriversForDjango
 startDjangoProject
+installMySQLdbDriversForDjango
