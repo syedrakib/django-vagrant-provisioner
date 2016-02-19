@@ -31,6 +31,7 @@ setupPythonVirtualEnv(){
 	rm -r ./virtualenv-13.1.2/
 	rm ./virtualenv-13.1.2.tar.gz
 	source ./myDjangoVirtualEnv/bin/activate
+	pip install --upgrade pip
 	pip install ipython
 	deactivate
 	echo -e "\tDONE::: Setting up VirtualEnv."
@@ -40,7 +41,7 @@ installDjangoViaPip(){
 	echo "Installing django via pip..."
 	cd /home/vagrant
 	source ./myDjangoVirtualEnv/bin/activate
-	pip install django
+	pip install Django==1.8.9
 	deactivate
 	echo -e "\tDONE::: Installing django via pip."
 }
