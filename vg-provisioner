@@ -25,11 +25,11 @@ setupMySQL(){
 setupPythonVirtualEnv(){
 	echo "Setting up VirtualEnv..."
 	cd /home/vagrant
-	wget https://pypi.python.org/packages/source/v/virtualenv/virtualenv-13.1.2.tar.gz
-	tar zxvf ./virtualenv-13.1.2.tar.gz
-	python ./virtualenv-13.1.2/virtualenv.py ./myDjangoVirtualEnv
-	rm -r ./virtualenv-13.1.2/
-	rm ./virtualenv-13.1.2.tar.gz
+	wget https://pypi.python.org/packages/source/v/virtualenv/virtualenv-14.0.6.tar.gz
+	tar zxvf ./virtualenv-14.0.6.tar.gz
+	python ./virtualenv-14.0.6/virtualenv.py ./myDjangoVirtualEnv
+	rm -r ./virtualenv-14.0.6/
+	rm ./virtualenv-14.0.6.tar.gz
 	source ./myDjangoVirtualEnv/bin/activate
 	pip install --upgrade pip
 	pip install ipython
