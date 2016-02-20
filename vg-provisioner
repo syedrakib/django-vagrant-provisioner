@@ -37,6 +37,16 @@ setupPythonVirtualEnv(){
 	echo -e "\tDONE::: Setting up VirtualEnv."
 }
 
+installPythonTinker(){
+	echo "Installing python tinker via apt-get"
+	cd /home/vagrant
+	source ./myDjangoVirtualEnv/bin/activate
+	apt-get install -y python-tk
+	apt-get install -y tk-dev
+	deactivate
+	echo -e "\tDONE::: Installing python tinker via apt-get"
+}
+
 installDjangoViaPip(){
 	echo "Installing django via pip..."
 	cd /home/vagrant
@@ -79,7 +89,8 @@ DIYconfigureSettingsDotPy(){
        'HOST':		'127.0.0.1',
        'PORT':		'3306'
  	}
-	# set TIME_ZONE = 'Asia/Dhaka'
+	# set TIME_ZONE = 
+	"Asia/Dhaka"
 }
 
 DIYpopulateDatabaseWithInitialDjangoSchema(){
@@ -134,6 +145,7 @@ DoItYourselfBlock(){
 updateAptGetPackages
 setupMySQL
 setupPythonVirtualEnv
+installPythonTinker
 installDjangoViaPip
 installMySQLdbDriversForDjango
 DoItYourselfBlock
