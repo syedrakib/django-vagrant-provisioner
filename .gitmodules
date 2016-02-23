@@ -1,0 +1,3 @@
+[submodule "sourcecodes/myproject"]
+	path = sourcecodes/myproject
+	url = git@github.com:syedrakib/django-HelloWorld.git
