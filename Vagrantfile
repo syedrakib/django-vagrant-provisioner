@@ -22,5 +22,5 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vb.name = "django-helloWorld"
   end
   config.vm.provision "shell", path: "./vg-provisioner"
-  # config.vm.provision "shell", path: "./vg-provisioner-always", run: "always"
+  config.vm.provision "shell", path: "./vg-provisioner-always", run: "always"
 end
