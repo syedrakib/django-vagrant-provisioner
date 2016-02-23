@@ -57,86 +57,10 @@ installMySQLdbDriversForDjango(){
 	echo -e "\tDONE::: Installing MySQL DB Drivers for Django."
 }
 
-DIYstartNewDjangoProject(){
-	echo "DIY::: Start new django project 'mysite'..."
-	return
-	cd /home/vagrant
-	source ./myDjangoVirtualEnv/bin/activate
-	cd ./sourcecodes
-	django-admin startproject mysite # creates a bunch of files for the project
-	deactivate
-}
-
-DIYconfigureSettingsDotPy(){
-	echo "DIY::: Configure mysite/mysite/settings.py to declare DB/timezone settings..."
-	return
-	# Use this JSON object as the value for DATABASES['default']:
-	{
-       'ENGINE':	'django.db.backends.mysql',
-       'NAME':		'hello_django',
-       'USER': 		'root',
-       'PASSWORD':	'root',
-       'HOST':		'127.0.0.1',
-       'PORT':		'3306'
- 	}
-	# set TIME_ZONE = 
-	"Asia/Dhaka"
-}
-
-DIYpopulateDatabaseWithInitialDjangoSchema(){
-	echo "DIY::: Populate database with initial django schema..."
-	return
-	cd /home/vagrant
-	source ./myDjangoVirtualEnv/bin/activate
-	cd ./sourcecodes/mysite/
-	python ./manage.py migrate # the actual command that sets up the initial DB state
-	deactivate
-}
-
-DIYrunDjangoServer(){
-	echo "DIY::: Run django server..."
-	return
-	cd /home/vagrant
-	source ./myDjangoVirtualEnv/bin/activate
-	cd ./sourcecodes/mysite
-	python ./manage.py runserver 0.0.0.0:8000 # visit localhost:8001 based on the <config.vm.network "forwarded_port"> settings in Vagrantfile
-}
-
-DIYstartNewDjangoApp(){
-	echo "DIY::: Start new django app 'polls'..."	
-	return
-	cd /home/vagrant
-	source ./myDjangoVirtualEnv/bin/activate
-	cd ./sourcecodes/mysite
-	python manage.py startapp polls # creates new directory polls with a fresh application directory structure
-	deactivate
-}
-
-DIYbuildApplicationModels(){
-	echo "DIY::: Build application models..."
-	return
-	# follow
-	# https://docs.djangoproject.com/en/1.8/intro/tutorial01/#creating-models
-	# from here onwards
-}
-
-DoItYourselfBlock(){
-	echo "##################################################################"
-	echo "############### YOU HAVE ENTERED DoItYourselfBlock ###############"
-	echo "##################################################################"
-	DIYstartNewDjangoProject
-	DIYconfigureSettingsDotPy
-	DIYpopulateDatabaseWithInitialDjangoSchema
-	DIYrunDjangoServer
-	DIYstartNewDjangoApp
-	DIYbuildApplicationModels
-}
-
 updateAptGetPackages
 setupMySQL
 setupPythonVirtualEnv
 installDjangoViaPip
 installMySQLdbDriversForDjango
-DoItYourselfBlock
 
 
