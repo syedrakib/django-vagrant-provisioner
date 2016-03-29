@@ -25,12 +25,15 @@ setupMySQL(){
 setupPythonVirtualEnv(){
 	echo "Setting up VirtualEnv..."
 	cd /home/vagrant
+	mkdir environments
+	chown -R vagrant environments/
+	chgrp -R vagrant environments/
+	cd ./environments
 	wget https://pypi.python.org/packages/source/v/virtualenv/virtualenv-14.0.6.tar.gz
 	tar zxvf ./virtualenv-14.0.6.tar.gz
-	python ./virtualenv-14.0.6/virtualenv.py ./myDjangoVirtualEnv
-	rm -r ./virtualenv-14.0.6/
 	rm ./virtualenv-14.0.6.tar.gz
-	source ./myDjangoVirtualEnv/bin/activate
+	python ./virtualenv-14.0.6/virtualenv.py ./hello-django-venv
+	source ./hello-django-venv/bin/activate
 	pip install --upgrade pip
 	pip install ipython
 	deactivate
@@ -40,7 +43,7 @@ setupPythonVirtualEnv(){
 installDjangoViaPip(){
 	echo "Installing django via pip..."
 	cd /home/vagrant
-	source ./myDjangoVirtualEnv/bin/activate
+	source ./environments/hello-django-venv/bin/activate
 	pip install Django==1.8.9
 	deactivate
 	echo -e "\tDONE::: Installing django via pip."
@@ -51,7 +54,7 @@ installMySQLdbDriversForDjango(){
 	apt-get install -y libmysqlclient-dev 
 	apt-get install -y python-dev
 	cd /home/vagrant
-	source ./myDjangoVirtualEnv/bin/activate
+	source ./environments/hello-django-venv/bin/activate
 	pip install mysqlclient
 	deactivate
 	echo -e "\tDONE::: Installing MySQL DB Drivers for Django."
