@@ -5,7 +5,9 @@ echo "###################### DJANGO-READY MACHINE IS PROVISIONED FOR YOU #######
 echo "##########################################################################################"
 echo "##########################################################################################"
 echo "  $ cd . "
-echo "  $ git submodule add git@github.com:syedrakib/django-HelloWorld.git sourcecodes/myproject"
-echo "  $ cd sourcecodes/myproject/"
+echo "  $ git submodule add git@github.com:syedrakib/django-HelloWorld.git sourcecodes/hello-django"
+echo "  $ cd sourcecodes/hello-django/"
 echo "  $ DO YOUR MAGIC !!!"
 echo "visit: https://docs.djangoproject.com/en/1.8/intro/tutorial01/"
+
+
